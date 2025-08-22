@@ -6,6 +6,21 @@ import {
   Settings,
   User2,
   ChevronUp,
+  User,
+  GraduationCap,
+  Users,
+  UsersRound,
+  Book,
+  Megaphone,
+  MessageSquare,
+  UserCheck,
+  UserCheck2,
+  CalendarDays,
+  BookOpenText,
+  BookCheck,
+  NotebookPen,
+  BookOpenCheck,
+  LogOut,
 } from "lucide-react";
 import {
   Sidebar,
@@ -26,6 +41,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
@@ -36,24 +53,59 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Teachers",
+    url: "/teacher",
+    icon: GraduationCap,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Students",
+    url: "/student",
+    icon: Users,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Parents",
+    url: "/parent",
+    icon: UsersRound,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Classes",
+    url: "/classes",
+    icon: BookOpenText,
+  },
+  {
+    title: "Lessons",
+    url: "/lessions",
+    icon: BookCheck,
+  },
+  {
+    title: "Exams",
+    url: "/exams",
+    icon: BookOpenCheck,
+  },
+  {
+    title: "Assignments",
+    url: "/assignments",
+    icon: NotebookPen,
+  },
+  {
+    title: "Attendance",
+    url: "/Attendance",
+    icon: UserCheck,
+  },
+  {
+    title: "Events",
+    url: "/Events",
+    icon: CalendarDays,
+  },
+  {
+    title: "Messages",
+    url: "/Messages",
+    icon: MessageSquare,
+  },
+  {
+    title: "Announcement",
+    url: "/Announcement",
+    icon: Megaphone,
   },
 ];
 
@@ -103,9 +155,24 @@ const AppSidebar = () => {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>Account</DropdownMenuItem>
-                <DropdownMenuItem>Setting</DropdownMenuItem>
-                <DropdownMenuItem>Sign out</DropdownMenuItem>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/admin/dashboard/profile"
+                    className="flex items-center gap-2"
+                  >
+                    <User />
+                    My Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Settings /> Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive">
+                  {" "}
+                  <LogOut /> Logout
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>

@@ -1,4 +1,5 @@
 import AppSidebar from "@/components/appsidebar";
+import Navbar from "@/components/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
@@ -12,6 +13,7 @@ export default function DashboardLayout({
         <SidebarProvider >
           <AppSidebar/>
           <main className="w-full">
+            <Navbar/>
             <div className="px-4">{children}</div>
           </main>
         </SidebarProvider>
