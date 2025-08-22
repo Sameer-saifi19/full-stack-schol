@@ -3,6 +3,7 @@
 import {
   LogOut,
   Megaphone,
+  Menu,
   MessageCircle,
   Moon,
   Search,
@@ -16,17 +17,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "./ui/sidebar";
-import Link from "next/link";
-import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import Image from "next/image";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -34,17 +30,12 @@ export default function Navbar() {
     <nav className="p-4 mb-8 flex items-center justify-between">
       <div className="flex items-center gap-6">
         <SidebarTrigger className="size-10" />
-        <Input placeholder="Search" className="w-72"></Input>
+        <Input placeholder="Search" className="w-60 sm:w-72 sm:block"></Input>
       </div>
-      <div className="flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-6">
         {/* Theme toggle */}
-
-        <div>
-          <Megaphone className="h-5 w-5 cursor-pointer" />
-        </div>
-        <div>
-          <MessageCircle className="h-5 w-5 cursor-pointer" />
-        </div>
+        <Megaphone className="h-5 w-5 cursor-pointer" />
+        <MessageCircle className="h-5 w-5 cursor-pointer" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -76,6 +67,40 @@ export default function Navbar() {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
+
+      <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem>
+                <Megaphone className="mr-2 h-4 w-4" /> Notifications
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <MessageCircle className="mr-2 h-4 w-4" /> Messages
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                🌞 Light Mode
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                🌙 Dark Mode
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>
+                🖥 System
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" /> Sameer Saifi (Student)
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" /> Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
     </nav>
   );
 }
